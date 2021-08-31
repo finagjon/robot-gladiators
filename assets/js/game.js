@@ -59,7 +59,7 @@ var fight = function(enemyName) {
         playerHealth = playerHealth - enemyAttack;
         console.log(
             enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining."
-        );
+    );
     
         // check player's health
         if (playerHealth <= 0) {
@@ -74,8 +74,21 @@ var fight = function(enemyName) {
 
 // execute function to start game
 for(var i = 0; i < enemyNames.length; i++) {
-    var pickedEnemyName = enemyNames[i];
-    enemyHealth = 50;
-    // debugger;
-    fight(pickedEnemyName);
+    if (playerHealth > 0) {
+        // let plater know what round they are in, remember that arrays start at 0 so it needs to have 1 added to it
+        window.alert("Welcome to Robot Gladiators! Round " + ( i + 1 ) );
+        // pick new enemy to fight based on the index of the enemyNames array
+        var pickedEnemyName = enemyNames[i];
+        // reset enemyHealth before starting a new fight
+        enemyHealth = 50;
+
+        // debugger;
+
+        // pass the pickedEnemyName variable's value into the fight function, where it will assume the value of the enemyName parameter
+        fight(pickedEnemyName);
+    }
+    else {
+        window.alert("You have lost your robot in battle! Game Over!");
+        break;
+    }
 }
